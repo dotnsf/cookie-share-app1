@@ -8,30 +8,32 @@
 
 ## Setup
 
-### app1, app2 共通
+- `$ git clone https://github.com/dotnsf/cookie-share-app1`
 
-- `$ git clone https://github.com/dotnsf/cookie-share`
+- `$ cd cookie-share-app1`
 
-- `$ cd cookie-share`
+- `http(s)://app1.domain.com` というホスト名で動作させる
 
-### app1（クッキー設定側）
+  - `domain.com` 部分は環境変数 `DOMAIN` で設定する
 
-- `app1.domain.com` というホスト名で動作させる前提とする
-
-  - `domain.com` 部分は環境変数で設定する
-
-- `$ cd app1`
-
-- 環境変数 `DOMAIN` に `domain.com` を指定して起動し、`app1.domain.com` で接続できるようにする
+- app2 側も起動する
 
 
-### app2（クッキー取得側）
+## Run
 
-- `app2.domain.com` というホスト名で動作させる前提とする
+- `http(s)://app1.domain.com/` と `http(s)://app2.domain.com/` をブラウザの異なるタブで起動する
 
-- `$ cd app2`
+- app1 の `Set nomally` ボタンをクリックしてから、app2 の `getMyCookie` ボタンをクリックする
 
-- `app2.domain.com` で接続できるように起動する
+  - app1 側で普通にクッキーを設定してから app2 側で同じクッキーの取得を試みている
+
+  - 設定したクッキーが取得できないことを確認する（通常の挙動）
+
+- app1 の `Set with domain` ボタンをクリックしてから、app2 の `getMyCookie` ボタンをクリックする
+
+  - app1 側で工夫を伴うクッキーを設定してから app2 側で同じクッキーの取得を試みている
+
+  - 設定したクッキーが取得できること（２つの異なるホスト間でクッキーの共有ができる）ことを確認する
 
 
 ## References
