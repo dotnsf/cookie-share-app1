@@ -4,7 +4,7 @@ var express = require( 'express' ),
     app = express();
 
 require( 'dotenv' ).config();
-var domain = DOMAIN in process.env && process.env.DOMAIN ? process.env.DOMAIN : 'domain.com';
+var domain = 'DOMAIN' in process.env && process.env.DOMAIN ? process.env.DOMAIN : 'domain.com';
 
 app.use( express.static( __dirname + '/public' ) );
 app.set( 'views', __dirname + '/views' );
