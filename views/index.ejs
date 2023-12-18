@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta charset="utf8"/>
+<meta http-equiv="pragma" content="no-cache"/>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"></script>
+<link href="//use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet"/>
+
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="apple-mobile-web-app-title" content="cookie-share-app1"/>
+
+<title>Cookie Share : app1</title>
+<script>
+$(function(){
+});
+
+function setMyCookie( username, password ) {
+  var s = escape( "username" ) + "=" + escape( username );
+  document.cookie = s;
+  var t = escape( "password" ) + "=" + escape( password );
+  document.cookie = t;
+  alert( "setMyCookie: " + s + "\n" + t ); // 保存内容を確認表示
+}
+
+function setMyCookieWithDomain( username, password ) {
+  var s = setWithDomain( "username", username );
+  document.cookie = s;
+  var t  =setWithDomain( "password", password );
+  document.cookie = t;
+  alert( "setMyCookieWithDomain: " + s + "\n" + t ); // 保存内容を確認表示
+}
+
+function setWithDomain( key, val ){
+  var str = escape( key ) + "=" + escape( val );
+  str += "; domain=.<%= domain %>"; // 頭に "." を付けたドメイン名を指定（ここがカギ！）
+  return str;
+}
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">Cookie Share : app1</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+  </div>
+</nav>
+
+<div class="container" id="main_div" style="position: relative; top: 80px;">
+  <input type="button" class="btn btn-primary" value="Set normally" onclick="setMyCookie( 'username0', 'password0' );">
+  <input type="button" class="btn btn-success" value="Set with domain" onclick="setMyCookieWithDomain( 'username1', 'password1' );">
+</div>
+
+</body>
+</html>
